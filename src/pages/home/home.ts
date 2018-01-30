@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import { ToastController } from 'ionic-angular';
 
 @Component({
   selector: 'page-home',
@@ -77,7 +78,7 @@ export class HomePage {
   public result: string;
   public showReorder = false;
 
-  constructor(public navCtrl: NavController) {
+  constructor(public navCtrl: NavController, public toastCtrl: ToastController) {
 
   }
 /**
@@ -115,10 +116,22 @@ export class HomePage {
   guess(animalName){
     if(this.currentAnimal != null){
       if (animalName == this.currentAnimal.title){
-        this.result="Bravo! Tu as gagné!!!"
+        this.result="Bravo! Tu as gagné!!!";
+        this.toastCtrl.create({
+          message:"Bravo! Tu as gagné!!!",
+          duration:3000,
+          position: 'top',
+          cssClass: 'toastCss'
+        }).present();
         this.currentAnimal = null;
       }else{
-        this.result="Oups! Essaie encore!!"
+        this.result="Oups! Essaie encore!!";
+        this.toastCtrl.create({
+          message:"Oups! Essaie encore!!",
+          duration:3000,
+          position: 'top',
+          cssClass: 'toastCss'
+        }).present();
       }
     }else{
       this.result = "veuillez faire votre choix"
@@ -130,6 +143,8 @@ export class HomePage {
   activeReorder(){
     this.showReorder=!this.showReorder;
   }
+
+  
 }
 
 
