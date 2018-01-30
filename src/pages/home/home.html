@@ -3,12 +3,32 @@
     <ion-title>
       Ionic Blank
     </ion-title>
+    <ion-buttons end>
+      <button ion-button (click)= "activeReorder()">
+        <ion-icon name="funnel"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+
+  <ion-list>
+    <ion-item-group [reorder]="showReorder" (ionItemReorder)="$event.applyTo(animals)">
+      <ion-item class="item" *ngFor="let animal of animals; let pos=index">
+
+        <ion-avatar item-right (click)="guess(pos)">
+          <img src="/assets/{{animal.image}}">
+        </ion-avatar>
+        <h2>{{animal.title}}</h2>
+        <p>{{animal.desc}}</p>
+
+      </ion-item>
+    </ion-item-group>
+  </ion-list>
+
 </ion-content>
+<ion-footer padding>
+  <button ion-button (click)="playSound()">Jouer le son</button>
+  <p style="display:inline;">{{result}}</p>
+</ion-footer>
