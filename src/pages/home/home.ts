@@ -76,5 +76,12 @@ export class HomePage {
   constructor(public navCtrl: NavController) {
 
   }
+/**
+ * choix aléatoire d'un animal
+ */
+  pickAnimal(){
+    let pos = Math.floor(Math.random()*this.animals.length);
+    return pos
+  }
 
 }
