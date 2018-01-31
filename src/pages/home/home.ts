@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, Events } from 'ionic-angular';
 import { ToastController } from 'ionic-angular';
+import { DetailsPage } from '../details/details';
+
 
 @Component({
   selector: 'page-home',
@@ -78,8 +80,18 @@ export class HomePage {
   public result: string;
   public showReorder = false;
 
-  constructor(public navCtrl: NavController, public toastCtrl: ToastController) {
+  constructor(public navCtrl: NavController, public toastCtrl: ToastController, public events:Events) {
 
+    events.subscribe('dataReturn', (data)=>{
+      console.log(data);
+      data = JSON.parse(data);
+      toastCtrl.create({
+        message: data.message + "--" + data.pwd,
+        duration: 3000
+      }).present();
+      
+      });
+      
   }
 /**
  * choix aléatoire d'un animal
@@ -143,8 +155,15 @@ export class HomePage {
   activeReorder(){
     this.showReorder=!this.showReorder;
   }
+ 
+  /**
+   * permet la navigation vers une autre page
+   */
+  goToDetails(animal){
+    this.navCtrl.push(DetailsPage, {data:animal});
+  }
 
-  
+  ionVi
 }
 
 
