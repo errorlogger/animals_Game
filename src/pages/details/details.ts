@@ -28,11 +28,7 @@ export class DetailsPage {
     console.log('ionViewDidLoad DetailsPage');
   }
 
-  //ionViewWillLeave(){
-  //  console.log(this.inputMessage);
-  //  this.events.publish('dataReturn',this.inputMessage);
-  //}
-
+  
   validation(){
     console.log(this.inputMessage);
     let data = {

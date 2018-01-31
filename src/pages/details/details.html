@@ -23,16 +23,21 @@
             <ion-label floating>saisiseez votre mot de passe</ion-label>
             <ion-input type="password" [(ngModel)]='inputPwd'></ion-input>
         </ion-item>
+        <ion-item>
+          <ion-label floating>nom de l'animal</ion-label>
+          <ion-input type="text" [(ngModel)]='animal.title'></ion-input>
+      </ion-item>
       </ion-list>
   <ion-card>
     <ion-card-header>
       <h1>{{animal.title}}</h1>
     </ion-card-header>
-  </ion-card>
+
   <ion-card-content>
     <h2>{{animal.desc}}</h2>
     <img src="assets/{{animal.image}}">
   </ion-card-content>
+</ion-card>
   <p>{{animal.file}}</p>
   
   <button ion-button color="danger" round (click)='validation()'>VALIDER</button>
